@@ -16,7 +16,7 @@ class Bea_Autologin {
 			return;
 		}
 
-		add_action( 'wp_authenticate', array( $this, 'authenticate' ) );
+		add_action( 'wp_authenticate', [ $this, 'authenticate' ] );
 	}
 
 	/**
