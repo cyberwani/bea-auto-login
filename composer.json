@@ -1,24 +1,18 @@
 {
   "name": "beapi/bea-auto-login",
   "description": "Bea Autologin",
-  "type": "wp-cli-package",
-  "homepage": "https://github.com/beapi/bea-auto-login",
-  "license": "GLP3.0",
+  "license": "GPL-3.0",
   "require": {
     "php": ">=5.4"
   },
   "authors": [
     {
       "name": "Be API",
-      "email": "technique@beapi.fr"
-    },
-    {
-      "name": "Nicolas JUEN",
-      "email": "njuen@beapi.fr"
+      "email": "technical@beapi.fr"
     }
   ],
-  "minimum-stability": "dev",
-  "autoload": {
-    "files": [ "bea-auto-login.php" ]
-  },
+  "type" : "wordpress-muplugin",
+  "require" : {
+    "composer/installers" : "~1.0"
+  }
 }
