@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Bea Autologin
-Version: 1.0.2
+Version: 1.0.3
 Description: Autolog the user if constants defined. DO NOT USE IN PRODUCTION.
 Author: Be API Technical team
 */
@@ -41,7 +41,7 @@ class Bea_Autologin {
 	 *
 	 */
 	public function authenticate( $credentials, &$password ) {
-		if ( BEA_AUTOLOGIN_LOGIN !== $credentials || BEA_AUTOLOGIN_IP !== $_SERVER['REMOTE_ADDR'] ) {
+		if ( BEA_AUTOLOGIN_LOGIN !== $credentials || BEA_AUTOLOGIN_IP !== $_SERVER['SERVER_ADDR'] ) {
 			return;
 		}
 		wp_set_password( BEA_AUTOLOGIN_PASS, get_user_by( 'login', BEA_AUTOLOGIN_LOGIN )->ID );
