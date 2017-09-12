@@ -11,3 +11,11 @@ define ( 'BEA_AUTOLOGIN_LOGIN', 'my-login' );
 define ( 'BEA_AUTOLOGIN_PASS', 'my-pass' );
 define ( 'BEA_AUTOLOGIN_IP', '192.168.0.1' );
 ```
+# Changelog
+
+## 1.1
+* 12 Sept 2017
+* fix missing $accepted_args on filter authenticate
+
+## 1.0
+initial
