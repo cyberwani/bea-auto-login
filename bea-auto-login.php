@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Bea Autologin
-Version: 1.0.0
+Version: 1.0.1
 Description: Autolog the user if constants defined. DO NOT USE IN PRODUCTION.
 Author: Be API Technical team
 */
@@ -16,7 +16,7 @@ class Bea_Autologin {
 			return;
 		}
 
-		add_action( 'wp_authenticate', [ $this, 'authenticate' ] );
+		add_action( 'wp_authenticate', [ $this, 'authenticate' ], 10, 2 );
 	}
 
 	/**
