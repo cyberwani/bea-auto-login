@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Bea Autologin
-Version: 1.0.1
+Version: 1.0.2
 Description: Autolog the user if constants defined. DO NOT USE IN PRODUCTION.
 Author: Be API Technical team
 */
