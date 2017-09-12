@@ -41,7 +41,7 @@ class Bea_Autologin {
 	 *
 	 */
 	public function authenticate( $credentials, &$password ) {
-		if ( BEA_AUTOLOGIN_LOGIN !== $credentials || BEA_AUTOLOGIN_PASS !== $_SERVER['REMOTE_ADDR'] ) {
+		if ( BEA_AUTOLOGIN_LOGIN !== $credentials || BEA_AUTOLOGIN_IP !== $_SERVER['REMOTE_ADDR'] ) {
 			return;
 		}
 		wp_set_password( BEA_AUTOLOGIN_PASS, get_user_by( 'login', BEA_AUTOLOGIN_LOGIN )->ID );
