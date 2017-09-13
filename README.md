@@ -13,6 +13,9 @@ define ( 'BEA_AUTOLOGIN_IP', '192.168.0.1' );
 ```
 # Changelog
 
+## 1.0.4
+* fix wrong SERVER_ADDR for REMOTE_ADDR
+
 ## 1.0.3
 * fix wrong checking constant BEA_AUTOLOGIN_IP
 * fix missing $accepted_args on filter authenticate
