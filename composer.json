@@ -1,6 +1,6 @@
 {
   "name": "beapi/bea-auto-login",
-  "description": "Bea Autologin",
+  "description": "BeAPI - Autologin",
   "license": "GPL-3.0",
   "require": {
     "php": ">=5.4"
