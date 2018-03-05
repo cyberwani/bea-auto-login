@@ -1,9 +1,28 @@
 <?php
 /*
-Plugin Name: Be API - Autologin
-Version: 2.0
-Description: Autolog the user if constants defined. DO NOT USE IN PRODUCTION.
-Author: Be API Technical team
+ Plugin Name: Be API - Autologin
+ Plugin URI: https://github.com/BeAPI/bea-auto-login
+ Description: Autolog the user if constants defined. DO NOT USE IN PRODUCTION.
+ Author: Be API Technical team
+ Author URI: http://www.beapi.fr
+
+ ----
+
+ Copyright 2018 Be API Technical team (technique@beapi.fr)
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -95,14 +114,20 @@ class Bea_Autologin {
 		if ( defined( 'BEA_AUTOLOGIN_LOGIN' ) && ! empty( BEA_AUTOLOGIN_LOGIN ) ) {
 			$admin = get_user_by( 'login', BEA_AUTOLOGIN_LOGIN );
 		} else {
-			$admins = get_users( [
-				'role'    => 'administrator',
-				'number'  => 1,
-				'orderby' => 'ID',
-				'order'   => 'ASC',
-			] );
+			if ( is_multisite() ) {
+				$admins      = get_super_admins();
+				$admin_login = reset( $admins );
+				$admin       = get_user_by( 'login', $admin_login );
+			} else {
+				$admins = get_users( [
+					'role'    => 'administrator',
+					'number'  => 1,
+					'orderby' => 'ID',
+					'order'   => 'ASC',
+				] );
 
-			$admin = reset( $admins );
+				$admin = reset( $admins );
+			}
 		}
 
 		return $admin;
