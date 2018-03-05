@@ -89,7 +89,7 @@ class Bea_Autologin {
 	/**
 	 * If constant login defined, get value or get first admin user
 	 *
-	 * @return WP_User
+	 * @return WP_User|bool
 	 *
 	 */
 	public function get_admin() {
