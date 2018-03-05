@@ -27,6 +27,9 @@ define ( 'BEA_AUTOLOGIN_PASS', 'my-pass' );
 ```
 # Changelog
 
+## 2.0.1
+*  Connect to a super admin if multisite
+
 ## 2.0
 * Allow auto-login in admin when access to specific url
 

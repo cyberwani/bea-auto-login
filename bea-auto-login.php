@@ -1,9 +1,10 @@
 <?php
 /*
 Plugin Name: Be API - Autologin
-Version: 2.0
+Version: 2.0.1
 Description: Autolog the user if constants defined. DO NOT USE IN PRODUCTION.
 Author: Be API Technical team
+Network: true
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -88,21 +89,27 @@ class Bea_Autologin {
 	/**
 	 * If constant login defined, get value or get first admin user
 	 *
-	 * @return WP_User|bool
+	 * @return WP_User
 	 *
 	 */
 	public function get_admin() {
 		if ( defined( 'BEA_AUTOLOGIN_LOGIN' ) && ! empty( BEA_AUTOLOGIN_LOGIN ) ) {
 			$admin = get_user_by( 'login', BEA_AUTOLOGIN_LOGIN );
 		} else {
-			$admins = get_users( [
-				'role'    => 'administrator',
-				'number'  => 1,
-				'orderby' => 'ID',
-				'order'   => 'ASC',
-			] );
+			if ( is_multisite() ) {
+				$admins      = get_super_admins();
+				$admin_login = reset( $admins );
+				$admin       = get_user_by( 'login', $admin_login );
+			} else {
+				$admins = get_users( [
+					'role'    => 'administrator',
+					'number'  => 1,
+					'orderby' => 'ID',
+					'order'   => 'ASC',
+				] );
 
-			$admin = reset( $admins );
+				$admin = reset( $admins );
+			}
 		}
 
 		return $admin;
